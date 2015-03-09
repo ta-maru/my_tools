@@ -1,0 +1,49 @@
+■Ruby本体
+http://dl.bintray.com/oneclick/rubyinstaller/ruby-1.9.3-p551-i386-mingw32.7z?direct
+
+■DevKit(C/C++のライブラリを使用しているパッケージのビルドに必要)
+http://dl.bintray.com/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe?direct
+
+
+
+■Console log
+C:\tools\DevKit>ruby dk.rb init
+
+Initialization complete! Please review and modify the auto-generated
+'config.yml' file to ensure it contains the root directories to all
+of the installed Rubies you want enhanced by the DevKit.
+
+C:\tools\DevKit>ruby dk.rb install
+Invalid configuration or no Rubies listed. Please fix 'config.yml'
+and rerun 'ruby dk.rb install'
+★C:\tools\DevKit\config.ymlの編集し対処
+
+C:\tools\DevKit>ruby dk.rb install
+[INFO] Updating convenience notice gem override for 'C:/tools/ruby'
+[INFO] Installing 'C:/tools/ruby/lib/ruby/site_ruby/devkit.rb'
+
+C:\tools\DevKit>gem install racc
+Temporarily enhancing PATH to include DevKit...
+Building native extensions.  This could take a while...
+Successfully installed racc-1.4.12
+1 gem installed
+Installing ri documentation for racc-1.4.12...
+unable to convert "\xE3" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for README.ja.rdoc, skipping
+unable to convert "\xE3" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for rdoc/ja/NEWS.ja.rdoc, skipping
+unable to convert "\xE3" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for rdoc/ja/debug.ja.rdoc, skipping
+unable to convert "\xE8" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for rdoc/ja/grammar.ja.rdoc, skipping
+unable to convert "\xE3" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for rdoc/ja/parser.ja.rdoc, skipping
+Installing RDoc documentation for racc-1.4.12...
+unable to convert "\xE3" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for README.ja.rdoc, skipping
+unable to convert "\xE3" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for rdoc/ja/NEWS.ja.rdoc, skipping
+unable to convert "\xE3" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for rdoc/ja/debug.ja.rdoc, skipping
+unable to convert "\xE8" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for rdoc/ja/grammar.ja.rdoc, skipping
+unable to convert "\xE3" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for rdoc/ja/parser.ja.rdoc, skipping
+
+
+
+
+
+
+
+
