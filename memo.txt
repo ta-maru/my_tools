@@ -41,9 +41,12 @@ unable to convert "\xE8" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Wind
 unable to convert "\xE3" to UTF-8 in conversion from ASCII-8BIT to UTF-8 to Windows-31J for rdoc/ja/parser.ja.rdoc, skipping
 
 
+# DEBUG
+vi intp.y # add @yydebug = true in initialize method
+racc -g intp.y -o main.rb
 
 
-
+racc -v intp.y => intp.output
 
 
 
