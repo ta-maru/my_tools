@@ -5,7 +5,6 @@ http://dl.bintray.com/oneclick/rubyinstaller/ruby-1.9.3-p551-i386-mingw32.7z?dir
 http://dl.bintray.com/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe?direct
 
 
-
 ¡Console log
 C:\tools\DevKit>ruby dk.rb init
 
