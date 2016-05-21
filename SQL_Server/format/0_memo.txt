@@ -1,0 +1,4 @@
+ここにXML形式でフォーマットファイルを置く。
+
+参考：
+https://msdn.microsoft.com/ja-jp/library/ms187833(v=sql.120).aspx
