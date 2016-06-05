@@ -1,0 +1,9 @@
+TableA,Column1,1,int
+TableA,Column2,,int
+TableA,Column3,,int
+TableB,Column1,1,int
+TableB,Column2,,int
+TableB,Column3,,int
+TableC,Column1,1,int
+TableC,Column2,,int
+TableC,Column3,,int
