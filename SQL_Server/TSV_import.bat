@@ -22,6 +22,6 @@ echo データ削除が完了しました。
 REM データインポート
 for %%V in (.\tsv\*.tsv) do
 
-  sqlcmd -S %SRV%\%INS% -d %DB% -E -v CURRENT_DIR=%~dp0" TABLE_NAME="%%~nV" EXTENSION=".tsv" FIELDTERMINATOR="\t" FORMAT="format\%%~nV.xml" -i %CURRENT_DIR%import.sql -o "log\imp_%%~nV%LOG_FILE%"
+  sqlcmd -S %SRV%\%INS% -d %DB% -E -v CURRENT_DIR=%~dp0" TABLE_NAME="%%~nV" EXTENSION=".tsv" FIELDTERMINATOR="\t" FORMAT="format\%%~nV.xml" -i %CURRENT_DIR%bulk_insert.sql -o "log\imp_%%~nV%LOG_FILE%"
 )
 echo データインポートが完了しました。
