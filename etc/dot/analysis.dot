@@ -1,0 +1,20 @@
+# 以下を実行し関連図の画像を出力（dotコマンドにはGraphbizが必要）
+#
+# dot -Tpng analysis.dot -o output.png
+#
+
+digraph "g" {
+
+graph [rankdir = LR]
+#graph [ranksep=0.0]
+#node [shape=box, fontsize=18, width=3.0]
+#edge [style=invis]
+
+tableReportA -> tableB
+tableReportA -> tableC
+
+TableA [label='tableA' fontname='MS UI Gothic" style=filled, fillcolor="#FFFF99", fontcolor=black]
+TableB [label='tableA' fontname='MS UI Gothic" style=filled, fillcolor="#FFFF99", fontcolor=black]
+TableC [label='tableA' fontname='MS UI Gothic" style=filled, fillcolor="#FFFF99", fontcolor=black]
+
+}
