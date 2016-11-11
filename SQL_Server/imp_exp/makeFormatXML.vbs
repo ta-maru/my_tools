@@ -51,7 +51,7 @@ Sub OutputFile(path, text)
 
     Dim fso, fo
 
-    Set fso = CreateObject("Scripting, FileSystemObject")
+    Set fso = CreateObject("Scripting.FileSystemObject")
 
     Set fo = fso.OpenTextFile(path, 2, true)
 
@@ -65,8 +65,8 @@ Function GetXML(vList)
 
     Dim str
 
-    str = "<?xml version""1.0""?>" & vbCrLf
-    str = str + "<BCPFORMAT xmlns=""http://schemas.microsoft.com/sqlserver/2004/bulkload/format"" xmlns:xsi=""http://w3.org/2001/XMLSchema-instance"">" & vbCrLf
+    str = "<?xml version=""1.0""?>" & vbCrLf
+    str = str + "<BCPFORMAT xmlns=""http://schemas.microsoft.com/sqlserver/2004/bulkload/format"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">" & vbCrLf
     str = str + GetRecordTag(vList)
     str = str + GetRowTag(vList)
     str = str + "</BCPFORMAT>" & vbCrLf
@@ -87,15 +87,15 @@ Function GetRecordTag(vList)
     For Each v In vList
 
         If (i <> vList.Count) Then
-            str = str & "        <FIELD ID """ & i & """ xsi:type=""CharTerm"" TERMINATOR='\t' />" & vbCrLf
+            str = str & "        <FIELD ID=""" & i & """ xsi:type=""CharTerm"" TERMINATOR=""\t"" />" & vbCrLf
         Else
-            str = str & "        <FIELD ID """ & i & """ xsi:type=""CharTerm"" TERMINATOR='\r\n' />" & vbCrLf
+            str = str & "        <FIELD ID=""" & i & """ xsi:type=""CharTerm"" TERMINATOR=""\r\n"" />" & vbCrLf
         End If
 
         i = i + 1
     Next
 
-    str = str & "    </RECORD>" & vbCrLf
+    GetRecordTag = str & "    </RECORD>" & vbCrLf
 End Function
 
 
@@ -112,16 +112,22 @@ Function GetRowTag(vList)
 
         If (v(3) = "float") Then
             str = str & "        <COLUMN SOURCE=""" & i & """ NAME=""" & v(1) & """ xsi:type=""SQLFLT8"" />" & vbCrLf
+        ElseIf (v(3) = "varchar") Then
+            str = str & "        <COLUMN SOURCE=""" & i & """ NAME=""" & v(1) & """ xsi:type=""SQLVARYCHAR"" />" & vbCrLf
         Else
-            str = str & "        <COLUMN SOURCE=""" & i & """ NAME=""" & v(1) & """ xsi:type=""SQL" & UCase(v(3) & """ />" & vbCrLf
+            str = str & "        <COLUMN SOURCE=""" & i & """ NAME=""" & v(1) & """ xsi:type=""SQL" & UCase(v(3)) & """ />" & vbCrLf
         End If
 
         i = i + 1
     Next
 
-    str = str & "    </ROW>" & vbCrLf
+    GetRowTag = str & "    </ROW>" & vbCrLf
 End Function
 
+' DebugPrint
+' WScript.StdOut.WriteLine "TEST"
+' WScript.Echo "TEST"
+' MsgBox("TEST")
 
 
 ' -- ÉÅÉCÉìèàóù ---------------------------------------------------------------
@@ -129,7 +135,7 @@ End Function
 ' CSVì«Ç›çûÇ›
 Dim csvPath
 
-csvPath = GetScriptFolder() & "\tables_def.csv"
+csvPath = GetScriptFolder() & "\table_def.csv"
 
 Dim vList, v, tmpList, prev
 
