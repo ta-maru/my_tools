@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMT.Commons", "TMT.Commons\TMT.Commons.csproj", "{67F138E5-A44A-406B-8BDD-9C2281C6D27D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMT.App", "TMT.App\TMT.App.csproj", "{C3CEAB2C-1190-4071-82BE-B0D6D770E21D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67F138E5-A44A-406B-8BDD-9C2281C6D27D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67F138E5-A44A-406B-8BDD-9C2281C6D27D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67F138E5-A44A-406B-8BDD-9C2281C6D27D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67F138E5-A44A-406B-8BDD-9C2281C6D27D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3CEAB2C-1190-4071-82BE-B0D6D770E21D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3CEAB2C-1190-4071-82BE-B0D6D770E21D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3CEAB2C-1190-4071-82BE-B0D6D770E21D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3CEAB2C-1190-4071-82BE-B0D6D770E21D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
