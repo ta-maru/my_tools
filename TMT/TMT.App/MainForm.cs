@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TMT.Commons.Utility;
 
 namespace TMT.App
 {
@@ -40,15 +41,16 @@ namespace TMT.App
             foreach (var r in drags)
             {
                 var fi = new FileInfo(r);
+                DateTime dt = FileUtility.GetDateTime(r);
 
-                var fname = string.Format("{0}.jpg", fi.LastWriteTime.ToString("yyyyMMdd"));
+                var fname = string.Format("{0}.jpg", dt.ToString("yyyyMMdd"));
                 var fpath = Path.Combine(fi.Directory.FullName, fname);
 
                 int cnt = 1;
                 while ( File.Exists(fpath))
                 {
                     cnt++;
-                    fname = string.Format("{0}_{1}.jpg", fi.LastWriteTime.ToString("yyyyMMdd"), cnt);
+                    fname = string.Format("{0}_{1}.jpg", dt.ToString("yyyyMMdd"), cnt);
                     fpath = Path.Combine(fi.Directory.FullName, fname);
                 }
 
