@@ -32,8 +32,6 @@ try
 
         $configPath = Join-Path $curDir $configName
         $dllPath    = Join-Path $curDir $dllName
-        
-        $tradeBook = $null
     }
 
     [System.AppDomain]::CurrentDomain.SetData("APP_CONFIG_FILE", $configPath)
@@ -42,11 +40,6 @@ try
     Add-Type -Path $dllPath
     [void][System.Reflection.Assembly]::LoadFrom($dllPath)
 
-    if ($null -eq $tradeBook)
-    {
-        $tradeBook = New-Object XXXNS.XXXCLS
-    }
-    
     # 帳票ファイルパス
     $pathToDefinedReport = Split-Path $MyInvocation.MyCommand.Path -parent
     $xlFilePath = Join-Path $pathToDefinedReport "XYZ.xlsm"
