@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Reflection;
 
@@ -41,6 +43,33 @@ namespace TMT.Commons.Utility
             }
 
             return defaultValue;
+        }
+
+        /// <summary>
+        /// Get registry names.
+        /// </summary>
+        public static string[] GetRegValueNames(string key)
+        {
+            var rKey = Registry.LocalMachine.OpenSubKey(key);
+
+            return rKey.GetValueNames();
+        }
+
+        /// <summary>
+        /// Get registry values.
+        /// </summary>
+        public static string[] GetRegValues(string key)
+        {
+            var rKey = Registry.LocalMachine.OpenSubKey(key);
+
+            var list = new List<string>();
+
+            foreach(var nm in GetRegValueNames(key))
+            {
+                list.Add((string)rKey.GetValue(nm));
+            }
+
+            return list.ToArray();
         }
     }
 }

@@ -29,6 +29,14 @@ namespace TMT.App
             this.AllowDrop = true;
             this.DragEnter += MainForm_DragEnter;
             this.DragDrop += MainForm_DragDrop;
+
+
+            var eras = JapaneseEra.GetJapaneseEras();
+
+            foreach(var r in eras)
+            {
+                WriteToConsole(string.Format("{0}, {1}, {2}, {3}", r.EraName, r.EraNameShort, r.EraNameShortEng, r.StartDate));
+            }
         }
 
         /// <summary>

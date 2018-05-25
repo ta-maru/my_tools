@@ -49,6 +49,7 @@
     <Compile Include="Utility\CLParser.cs" />
     <Compile Include="Utility\CSTCLParser.cs" />
     <Compile Include="Utility\FileUtility.cs" />
+    <Compile Include="Utility\JapaneseEra.cs" />
     <Compile Include="Utility\Misc.cs" />
   </ItemGroup>
   <ItemGroup>
