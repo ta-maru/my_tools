@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TMT.Commons.Utility
 {
+    /// <summary>
+    /// Command Line Arguments
+    /// </summary>
     public class CLArg
     {
         public string Option { get; }
@@ -20,7 +20,7 @@ namespace TMT.Commons.Utility
     }
 
     /// <summary>
-    /// コマンドラインパーサー
+    /// Command Line Parser
     /// </summary>
     public class CLParser
     {
@@ -30,6 +30,9 @@ namespace TMT.Commons.Utility
 
         private string[] CLArgsOrg { get; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public CLParser(string[] clArgs)
         {
             CLArgsOrg = clArgs;
@@ -39,6 +42,9 @@ namespace TMT.Commons.Utility
             HasError = !Parse();
         }
 
+        /// <summary>
+        /// Parse arguments
+        /// </summary>
         public bool Parse()
         {
             foreach(var r in CLArgsOrg.Skip(1)) // [0]番目の実行ファイル名はSKIP

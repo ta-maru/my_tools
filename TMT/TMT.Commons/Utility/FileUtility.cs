@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using System.Text;
 
 namespace TMT.Commons.Utility
 {
+    /// <summary>
+    /// File Utility Class
+    /// </summary>
     public static class FileUtility
     {
+        /// <summary>
+        /// Get Image file timestamp(Shooting time)
+        /// </summary>
         public static DateTime GetDateTime(string filePath)
         {
             Bitmap bmp = new Bitmap(filePath);
 
-            DateTime dt = DateTime.Parse("2000/1/1");
+            DateTime dt = DateTime.Parse("2000/1/1"); // dummy
 
             foreach (PropertyItem item in bmp.PropertyItems)
             {

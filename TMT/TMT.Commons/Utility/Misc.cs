@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TMT.Commons.Utility
 {
@@ -13,6 +9,9 @@ namespace TMT.Commons.Utility
     /// </summary>
     public static class Misc
     {
+        /// <summary>
+        /// app.configより値を取得
+        /// </summary>
         public static T GetValueFromConfig<T>(NameValueCollection config, string valueName, T defaultValue)
             where T : struct
         {
@@ -36,7 +35,7 @@ namespace TMT.Commons.Utility
                     if ((bool)method.Invoke(null, parameters)) return (T)parameters[1];
                 }
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 return defaultValue;
             }

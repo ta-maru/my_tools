@@ -3,12 +3,18 @@ using System.Data.SqlClient;
 
 namespace TMT.Test.Utility
 {
+    /// <summary>
+    /// Table's enum
+    /// </summary>
     public enum TableTypes
     {
         TableA,
         TableB
     }
 
+    /// <summary>
+    /// BulkInserter Class
+    /// </summary>
     public static class BulkInserter
     {
         public static void Insert(TableTypes table, string dataFilePath, bool hasHeader = true)
