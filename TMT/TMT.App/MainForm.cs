@@ -37,6 +37,10 @@ namespace TMT.App
             {
                 WriteToConsole(string.Format("{0}, {1}, {2}, {3}", r.EraName, r.EraNameShort, r.EraNameShortEng, r.StartDate));
             }
+
+            WriteToConsole(DateTime.Now.ToString("gggyy年MM月dd日", JapaneseEra.GetJapaneseCultureInfo()));
+            WriteToConsole(DateTime.Now.ToString("yyyy年MM月dd日", JapaneseEra.GetJapaneseCultureInfo()));
+            WriteToConsole(DateTime.Now.ToString("yyyy年MM月dd日"));
         }
 
         /// <summary>
