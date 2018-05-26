@@ -35,12 +35,29 @@ namespace TMT.App
 
             foreach(var r in eras)
             {
-                WriteToConsole(string.Format("{0}, {1}, {2}, {3}", r.EraName, r.EraNameShort, r.EraNameShortEng, r.StartDate));
+                WriteToConsole(string.Format("{0}, {1}, {2}, {3}, {4}", r.Code, r.EraName, r.EraNameShort, r.EraNameShortEng, r.StartDate));
             }
 
+            WriteToConsole(new string('-', 40));
             WriteToConsole(DateTime.Now.ToString("gggyy年MM月dd日", JapaneseEra.GetJapaneseCultureInfo()));
+            WriteToConsole(DateTime.Now.ToString("ggyy年MM月dd日", JapaneseEra.GetJapaneseCultureInfo()));
+            WriteToConsole(DateTime.Now.ToString("ggee年MM月dd日", JapaneseEra.GetJapaneseCultureInfo()));
             WriteToConsole(DateTime.Now.ToString("yyyy年MM月dd日", JapaneseEra.GetJapaneseCultureInfo()));
+            WriteToConsole(new string('-', 40));
+            WriteToConsole(DateTime.Now.ToString("gggyy年MM月dd日"));
+            WriteToConsole(DateTime.Now.ToString("ggyy年MM月dd日"));
+            WriteToConsole(DateTime.Now.ToString("ggee年MM月dd日"));
             WriteToConsole(DateTime.Now.ToString("yyyy年MM月dd日"));
+            WriteToConsole(new string('-', 40));
+            WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("1989/01/08")) + string.Format("({0})", "1989/01/08"));
+            WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("1989/03/31")) + string.Format("({0})", "1989/03/31"));
+            WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("1989/04/01")) + string.Format("({0})", "1989/04/01"));
+            WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("2018/05/01")) + string.Format("({0})", "2018/05/01"));
+            WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("2019/03/31")) + string.Format("({0})", "2019/03/31"));
+            WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("2019/04/01")) + string.Format("({0})", "2019/04/01"));
+            WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("2019/05/01")) + string.Format("({0})", "2019/05/01"));
+            WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("2020/03/31")) + string.Format("({0})", "2020/03/31"));
+            WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("2020/04/01")) + string.Format("({0})", "2020/04/01"));
         }
 
         /// <summary>
@@ -180,7 +197,9 @@ namespace TMT.App
         /// <param name="str"></param>
         public void WriteToConsole(string str)
         {
-            this.textBox_debug.Text += (str + Environment.NewLine);
+            this.textBox_debug.AppendText(str + Environment.NewLine);
+            this.textBox_debug.Select(this.textBox_debug.Text.Length, 0);
+            this.textBox_debug.ScrollToCaret();
         }
     }
 }

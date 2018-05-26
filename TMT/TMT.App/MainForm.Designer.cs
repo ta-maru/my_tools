@@ -32,6 +32,7 @@
             this.textBox_debug = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.checkBoxBottomRight = new System.Windows.Forms.CheckBox();
             this.checkBoxUpperLeft = new System.Windows.Forms.CheckBox();
             this.textBoxCount = new System.Windows.Forms.TextBox();
@@ -41,9 +42,8 @@
             this.textBoxX1 = new System.Windows.Forms.TextBox();
             this.buttonCap = new System.Windows.Forms.Button();
             this.labelState = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.buttonSwitch = new System.Windows.Forms.Button();
-            this.buttonReset = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +54,7 @@
             this.textBox_debug.Location = new System.Drawing.Point(0, 292);
             this.textBox_debug.Multiline = true;
             this.textBox_debug.Name = "textBox_debug";
+            this.textBox_debug.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBox_debug.Size = new System.Drawing.Size(435, 170);
             this.textBox_debug.TabIndex = 0;
             // 
@@ -89,6 +90,16 @@
             this.tabPage1.Text = "Bitmap";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // buttonReset
+            // 
+            this.buttonReset.Location = new System.Drawing.Point(9, 151);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(76, 27);
+            this.buttonReset.TabIndex = 12;
+            this.buttonReset.Text = "reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
             // checkBoxBottomRight
             // 
             this.checkBoxBottomRight.AutoSize = true;
@@ -123,6 +134,7 @@
             this.textBoxY2.Name = "textBoxY2";
             this.textBoxY2.Size = new System.Drawing.Size(55, 19);
             this.textBoxY2.TabIndex = 6;
+            this.textBoxY2.Text = "128";
             // 
             // textBoxX2
             // 
@@ -130,6 +142,7 @@
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.Size = new System.Drawing.Size(55, 19);
             this.textBoxX2.TabIndex = 5;
+            this.textBoxX2.Text = "128";
             // 
             // textBoxY1
             // 
@@ -137,6 +150,7 @@
             this.textBoxY1.Name = "textBoxY1";
             this.textBoxY1.Size = new System.Drawing.Size(55, 19);
             this.textBoxY1.TabIndex = 4;
+            this.textBoxY1.Text = "0";
             // 
             // textBoxX1
             // 
@@ -144,6 +158,7 @@
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.Size = new System.Drawing.Size(55, 19);
             this.textBoxX1.TabIndex = 3;
+            this.textBoxX1.Text = "0";
             // 
             // buttonCap
             // 
@@ -164,16 +179,6 @@
             this.labelState.TabIndex = 1;
             this.labelState.Text = "OFF";
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(652, 236);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Temp";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // buttonSwitch
             // 
             this.buttonSwitch.Enabled = false;
@@ -185,15 +190,15 @@
             this.buttonSwitch.UseVisualStyleBackColor = true;
             this.buttonSwitch.Click += new System.EventHandler(this.buttonSwitch_Click);
             // 
-            // buttonReset
+            // tabPage2
             // 
-            this.buttonReset.Location = new System.Drawing.Point(9, 151);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(76, 27);
-            this.buttonReset.TabIndex = 12;
-            this.buttonReset.Text = "reset";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(427, 266);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Temp";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
