@@ -50,7 +50,7 @@ namespace TMT.Commons.Utility
 
             while(sDate < eDate)
             {
-                var cEraNm = eDate.ToString("ggg", ci);
+                var cEraNm = eDate.ToString("gg", ci);
 
                 if (cEraNm != eraNm)
                 {
@@ -119,25 +119,85 @@ namespace TMT.Commons.Utility
         }
 
         /// <summary>
+        /// 指定した書式設定で日付を表示
+        /// </summary>
+        public static string Format(string format, DateTime dt)
+        {
+            if (IsFirstYear(dt))
+            {
+                if (format.Contains("yy"))
+                {
+                    format = format.Replace("yy", "元");
+                } 
+                else if (format.Contains("y"))
+                {
+                    format = format.Replace("y", "元");
+                }
+            }
+
+            return dt.ToString(format, GetJapaneseCultureInfo());
+        }
+
+        /// <summary>
+        /// 元年の判定
+        /// </summary>
+        public static bool IsFirstYear(int y, int m, int d)
+        {
+            return IsFirstYear(new DateTime(y, m, d));
+        }
+
+        /// <summary>
+        /// 元年の判定
+        /// </summary>
+        public static bool IsFirstYear(DateTime dt)
+        {
+            var jpnYear = int.Parse(dt.ToString("yy", GetJapaneseCultureInfo()));
+
+            return (jpnYear == 1);
+        }
+
+        /// <summary>
+        /// 年度の文字列の取得
+        /// </summary>
+        public static string ConvFiscalYearStr(string format, DateTime dt)
+        {
+            var ci = GetJapaneseCultureInfo();
+
+            var fiscalStartDate = new DateTime(GetFiscalYear(dt), 4, 1);
+
+            var jpnYearStr = fiscalStartDate.ToString("ggyy", ci);
+
+            // 元年対応
+            if (IsFirstYear(fiscalStartDate))
+            {
+                jpnYearStr = fiscalStartDate.ToString("gg", ci) + "元";
+            }
+
+            return string.Format(format, jpnYearStr);
+        }
+
+        /// <summary>
+        /// 「○○年度」の取得
+        /// </summary>
+        public static string ConvFiscalYearStr(int y)
+        {
+            return ConvFiscalYearStr("{0}年度", new DateTime(y, 4, 1));
+        }
+
+        /// <summary>
+        /// 「○○年度」の取得
+        /// </summary>
+        public static string ConvFiscalYearStr(int y, int m , int d)
+        {
+            return ConvFiscalYearStr("{0}年度", new DateTime(y, m, d));
+        }
+
+        /// <summary>
         /// 「○○年度」の取得
         /// </summary>
         public static string ConvFiscalYearStr(DateTime dt)
         {
-            var ci = GetJapaneseCultureInfo();
-
-            var fiscalStartDate = DateTime.Parse(string.Format("{0}/04/01", GetFiscalYear(dt)));
-
-            var jpnEra = fiscalStartDate.ToString("gg", ci);
-            var jpnYear = int.Parse(fiscalStartDate.ToString("yy", ci));
-            var jpnYearStr = fiscalStartDate.ToString("ggyy", ci);
-
-            // 元年対応
-            if (jpnYear == 1)
-            {
-                jpnYearStr = jpnEra + "元";
-            }
-
-            return string.Format("{0}年度", jpnYearStr);
+            return ConvFiscalYearStr("{0}年度", dt);
         }
 
         /// <summary>

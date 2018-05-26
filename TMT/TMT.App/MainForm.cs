@@ -41,14 +41,22 @@ namespace TMT.App
             WriteToConsole(new string('-', 40));
             WriteToConsole(DateTime.Now.ToString("gggyy年MM月dd日", JapaneseEra.GetJapaneseCultureInfo()));
             WriteToConsole(DateTime.Now.ToString("ggyy年MM月dd日", JapaneseEra.GetJapaneseCultureInfo()));
+            WriteToConsole(DateTime.Now.AddYears(5).ToString("gy年M月d日", JapaneseEra.GetJapaneseCultureInfo()));
             WriteToConsole(DateTime.Now.ToString("ggee年MM月dd日", JapaneseEra.GetJapaneseCultureInfo()));
             WriteToConsole(DateTime.Now.ToString("yyyy年MM月dd日", JapaneseEra.GetJapaneseCultureInfo()));
             WriteToConsole(new string('-', 40));
             WriteToConsole(DateTime.Now.ToString("gggyy年MM月dd日"));
             WriteToConsole(DateTime.Now.ToString("ggyy年MM月dd日"));
+            WriteToConsole(DateTime.Now.AddYears(5).ToString("gy年M月d日"));
             WriteToConsole(DateTime.Now.ToString("ggee年MM月dd日"));
             WriteToConsole(DateTime.Now.ToString("yyyy年MM月dd日"));
             WriteToConsole(new string('-', 40));
+            WriteToConsole(string.Format("gggyy年MM月dd日", DateTime.Now));
+            WriteToConsole(string.Format("ggyy年MM月dd日", DateTime.Now));
+            WriteToConsole(string.Format("ggee年MM月dd日", DateTime.Now));
+            WriteToConsole(string.Format("yyyy年MM月dd日", DateTime.Now));
+            WriteToConsole(new string('-', 40));
+            WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("1989/01/07")) + string.Format("({0})", "1989/01/07"));
             WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("1989/01/08")) + string.Format("({0})", "1989/01/08"));
             WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("1989/03/31")) + string.Format("({0})", "1989/03/31"));
             WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("1989/04/01")) + string.Format("({0})", "1989/04/01"));
@@ -58,6 +66,28 @@ namespace TMT.App
             WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("2019/05/01")) + string.Format("({0})", "2019/05/01"));
             WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("2020/03/31")) + string.Format("({0})", "2020/03/31"));
             WriteToConsole(JapaneseEra.ConvFiscalYearStr(DateTime.Parse("2020/04/01")) + string.Format("({0})", "2020/04/01"));
+            WriteToConsole(new string('-', 40));
+            WriteToConsole(JapaneseEra.Format("ggyy年MM月dd日", DateTime.Parse("1989/01/07")) + string.Format("({0})", "1989/01/07"));
+            WriteToConsole(JapaneseEra.Format("ggyy年MM月dd日", DateTime.Parse("1989/01/08")) + string.Format("({0})", "1989/01/08"));
+            WriteToConsole(JapaneseEra.Format("ggyy年MM月dd日", DateTime.Parse("1989/03/31")) + string.Format("({0})", "1989/03/31"));
+            WriteToConsole(JapaneseEra.Format("ggyy年MM月dd日", DateTime.Parse("1989/04/01")) + string.Format("({0})", "1989/04/01"));
+            WriteToConsole(JapaneseEra.Format("ggyy年MM月dd日", DateTime.Parse("2018/05/01")) + string.Format("({0})", "2018/05/01"));
+            WriteToConsole(JapaneseEra.Format("ggyy年MM月dd日", DateTime.Parse("2019/03/31")) + string.Format("({0})", "2019/03/31"));
+            WriteToConsole(JapaneseEra.Format("ggyy年MM月dd日", DateTime.Parse("2019/04/01")) + string.Format("({0})", "2019/04/01"));
+            WriteToConsole(JapaneseEra.Format("ggyy年MM月dd日", DateTime.Parse("2019/05/01")) + string.Format("({0})", "2019/05/01"));
+            WriteToConsole(JapaneseEra.Format("ggyy年MM月dd日", DateTime.Parse("2020/03/31")) + string.Format("({0})", "2020/03/31"));
+            WriteToConsole(JapaneseEra.Format("ggyy年MM月dd日", DateTime.Parse("2020/04/01")) + string.Format("({0})", "2020/04/01"));
+            WriteToConsole(new string('-', 40));
+            WriteToConsole(JapaneseEra.Format("gy年M月d日", DateTime.Parse("1989/01/07")) + string.Format("({0})", "1989/01/07"));
+            WriteToConsole(JapaneseEra.Format("gy年M月d日", DateTime.Parse("1989/01/08")) + string.Format("({0})", "1989/01/08"));
+            WriteToConsole(JapaneseEra.Format("gy年M月d日", DateTime.Parse("1989/03/31")) + string.Format("({0})", "1989/03/31"));
+            WriteToConsole(JapaneseEra.Format("gy年M月d日", DateTime.Parse("1989/04/01")) + string.Format("({0})", "1989/04/01"));
+            WriteToConsole(JapaneseEra.Format("gy年M月d日", DateTime.Parse("2018/05/01")) + string.Format("({0})", "2018/05/01"));
+            WriteToConsole(JapaneseEra.Format("gy年M月d日", DateTime.Parse("2019/03/31")) + string.Format("({0})", "2019/03/31"));
+            WriteToConsole(JapaneseEra.Format("gy年M月d日", DateTime.Parse("2019/04/01")) + string.Format("({0})", "2019/04/01"));
+            WriteToConsole(JapaneseEra.Format("gy年M月d日", DateTime.Parse("2019/05/01")) + string.Format("({0})", "2019/05/01"));
+            WriteToConsole(JapaneseEra.Format("gy年M月d日", DateTime.Parse("2020/03/31")) + string.Format("({0})", "2020/03/31"));
+            WriteToConsole(JapaneseEra.Format("gy年M月d日", DateTime.Parse("2020/04/01")) + string.Format("({0})", "2020/04/01"));
         }
 
         /// <summary>
