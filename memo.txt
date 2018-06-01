@@ -61,3 +61,12 @@ set RUBYOPT=-Ku
 "H(?!ttp|eader|eight|tml)|
 (?<!PAT|Mont|Searc)H\.|
 
+
+¡ƒRƒ}ƒ“ƒh
+
+RD /S /Q       C:\temp
+MKDIR          C:\temp\temp2
+COPY  /Y       C:\temp\temp.ini  C:\temp2\
+XCOPY /Y /E /I C:\temp           C:\temp2
+XCOPY /Y /E    C:\temp           C:\temp2
+

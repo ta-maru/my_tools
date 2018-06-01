@@ -389,3 +389,42 @@ Public Function CreateGuidString() As String
     CreateGuidString = Left(CreateGuidString, 36)
     
 End Function
+
+
+' TEMP
+
+' HyperLinkクリック時
+Private Sub Workbook_SheetBeforeRightClick(ByVal Sh As Object, ByVal Target As Range, Cancel As Boolean)
+
+    If (Sh.Name <> wsList.Name) Then Exit Sub
+    If (Target.Column <> 6) Then Exit Sub ' E列
+
+    Cancel = True
+    
+    ' クリックされたセル
+    Dim r As Range: Set r = wsList.Range(Target.Address)
+    
+    Dim file As String: file = wsList.Range("A1").Offset(r.Row - 1).Value ' フルパス(A列)
+    Dim step As Long: step = wsList.Range("B1").Offset(r.Row - 1).Value ' 一致行(E列)
+    
+    If (file = "") Then Exit Sub
+        
+    ' テキストエディタで開く
+    Call OpenInSakura(wsConfig.Range("B1").Value & "\" & file, step)
+
+End Sub
+
+' テキストエディタで指定ファイルを開く
+Private Sub OpenInSakura(ByVal file As String, ByVal step As Long)
+
+    Call Execute("""" & wsConfig.Range("B2").Value & """", """" & file & """", "-Y=" & CStr(step))
+
+End Sub
+
+' EXEファイルの実行
+Private Sub Execute(ByVal exe As String, ByVal arg1 As String, ByVal arg2 As String)
+
+    Shell exe & " " & arg1 & " " & arg2, vbNormalFocus
+
+End Sub
+
