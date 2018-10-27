@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDAR.Commons", "MDAR.Commons\MDAR.Commons.csproj", "{39F50E32-7D82-4B52-8746-F21A16E434E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDAR.App", "MDAR.Application\MDAR.App.csproj", "{F4907C62-218F-45C2-A952-7A5B60B02BC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDAR.Test", "MDAR.Test\MDAR.Test.csproj", "{FE91503F-2036-41CC-BDD2-36438BE4C731}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39F50E32-7D82-4B52-8746-F21A16E434E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F50E32-7D82-4B52-8746-F21A16E434E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F50E32-7D82-4B52-8746-F21A16E434E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F50E32-7D82-4B52-8746-F21A16E434E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4907C62-218F-45C2-A952-7A5B60B02BC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4907C62-218F-45C2-A952-7A5B60B02BC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4907C62-218F-45C2-A952-7A5B60B02BC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4907C62-218F-45C2-A952-7A5B60B02BC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE91503F-2036-41CC-BDD2-36438BE4C731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE91503F-2036-41CC-BDD2-36438BE4C731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE91503F-2036-41CC-BDD2-36438BE4C731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE91503F-2036-41CC-BDD2-36438BE4C731}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
