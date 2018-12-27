@@ -50,6 +50,67 @@ Public Function GetFileName(ByVal path As String) As String
     GetFileName = fso.GetFileName(path)
 End Function
 
+' フォルダ名とファイル名の結合
+Public Function PathCombine(ByVal p1 As String, ByVal p2 As String) As String
+
+    Dim p As String: p = p1 & "\" & p2
+
+    ' P1の末尾、P2の先頭の両方に\があった場合
+    p = Replace(p, "\\\", "\")
+    
+    ' P1の末尾、P2の先頭のいずれか片方に\があった場合
+    p = Replace(p, "\\", "\")
+    
+    PathCombine = p
+
+End Function
+
+' 指定したパスにある最後のコンポーネント（フォルダ名）の取得
+Public Function GetLastFolderName(ByVal path As String) As String
+
+    GetLastFolderName = GetFileName(path)
+
+End Function
+
+' ファイル・フォルダ有無チェック
+Public Function ExistsPath(ByVal fileName As String) As Boolean
+    ExistsPath = False
+
+    fileName = GetAbsolutePathName(fileName)
+
+    If (Dir(fileName, vbNormal + vbDirectory) = "") Then
+
+        Exit Function
+    End If
+
+    ExistsPath = True
+
+End Function
+
+' ファイル・フォルダをコピーする
+Public Function Copy(ByVal src As String, ByVal dst As String) As Boolean
+
+    Copy = False
+
+    Dim s As String: s = GetAbsolutePathName(src)
+    Dim d As String: d = GetAbsolutePathName(dst)
+
+    Dim fso As Object: Set fso = CreateObject("Scripting.FileSystemObject")
+    
+    Dim tp As Long: tp = GetAttr(s)
+    
+    If (tp = vbDirectory) Then
+    
+        ' [s]フォルダ内の全ファイル・フォルダを[d]フォルダにコピーします
+        Call fso.GetFolder(s).Copy(d)
+        Copy = True
+    Else
+        Call fso.CopyFile(s, PathCombine(d, GetFileName(s)))
+        Copy = True
+    End If
+
+End Function
+
 ' フォルダ作成
 Public Sub Mkdir(ByVal path As String)
 
@@ -67,11 +128,41 @@ Public Sub Mkdir(ByVal path As String)
 
 End Sub
 
+' フォルダの削除
+Public Sub RmDir(ByVal path As String)
+
+    Dim p   As String: p = GetAbsolutePathName(path)
+    Dim fso As Object
+
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    
+    If (fso.FolderExists(p)) Then
+        
+        Call fso.DeleteFolder(p)
+    End If
+
+End Sub
+
 ' ファイル選択
 Public Function ShowFileOpenDialog() As String
 
     ShowFileOpenDialog = Application.GetOpenFilename("Microsoft Excelブック, *.xlsx;*xls")
     
+End Function
+
+' フォルダ選択
+Public Function ShowDirSelectDialog() As String
+
+    Dim d As FileDialog: Set d = Application.FileDialog(msoFileDialogFolderPicker)
+    
+    If (d.Show = True) Then
+    
+        ShowDirSelectDialog = d.SelectedItems(1)
+        Exit Function
+    End If
+
+    ShowDirSelectDialog = ""
+
 End Function
 
 ' 指定されたブックに指定されたシートが存在するかを判定
@@ -109,6 +200,41 @@ Public Function GetFolderPath(ByVal fullPath As String)
     GetFolderPath = Left(fullPath, pos)
     
 End Function
+
+' 指定フォルダ配下（サブフォルダ含む）のファイルのリストを取得する
+Public Function GetFileList(ByVal dir As String, ByVal extPattern As String) As Collection
+
+    Dim fileList As Collection: Set fileList = New Collection
+
+    Call GetFileListCore(Misc.GetAbsolutePathName(dir), extPattern, fileList)
+
+    Set GetFileList = fileList
+
+End Function
+
+' 指定フォルダ配下（サブフォルダ含む）のファイルのリストを取得する
+Private Sub GetFileListCore(ByVal searchDir As String, ByVal extPattern As String, ByRef fileList As Collection)
+
+    ' 参照設定の「Microsoft Scripting Runtime」にチェックが必要
+
+    Dim FSO          As Object: Set FSO = CreateFSO()
+    Dim objFile      As File
+    Dim objFolder    As folder
+
+    ' サブフォルダ取得
+    For Each objFolder In FSO.GetFolder(searchDir).SubFolders
+    
+        Call GetFileListCore(objFolder.path, extPattern, fileList)
+    Next
+    
+    ' ファイル名の取得
+    For Each objFile In FSO.GetFolder(searchDir).Files
+    
+        If (objFile Like extPattern) Then Call fileList.Add(objFile)
+            
+    Next
+    
+End Sub
 
 
 ' 文字列操作
@@ -280,7 +406,7 @@ Public Sub WriteToTextFile(ByRef ws As Worksheet, ByVal fName As String)
     ' 最終行の取得
     lineMax = ws.Range("A65533").End(xlUp).Row
     
-    Set ts = fso.CreateTextFile(fileName:=ThisWorkbook.path & fName, Overwrite:=True)
+    Set ts = fso.CreateTextFile(fileName:=fName, Overwrite:=True)
     
     lineCnt = 1
     
@@ -299,6 +425,50 @@ Public Sub WriteToTextFile(ByRef ws As Worksheet, ByVal fName As String)
     Set fso = Nothing
 
 End Sub
+
+' シート有無の判定
+Public Function ExistsWs(ByVal sheetNm As String) As Boolean
+
+    Dim ws As Variant
+    
+    ExistsWs = False
+    
+    For Each ws In Worksheets
+        
+        If (ws.Name = sheetNm) Then
+            ExistsWs = True
+            Exit For
+        End If
+    Next ws
+
+End Function
+
+' 指定ワークシートを削除
+Public Sub DeleteWs(ByVal sheetNm As String)
+
+    If (ExistsWs(sheetNm)) Then
+    
+        Application.DisplayAlerts = False
+        Worksheets(sheetNm).Delete
+        Application.DisplayAlerts = True
+    End If
+
+End Sub
+
+' 列を検索し一致した行の位置を返す
+Public Function FindCell(ByRef r As Range, ByVal str As String) As Long
+
+On Error GoTo NOT_FOUND
+
+    Dim ret As Range: Set ret = r.Find(str)
+    FindCell = ret.Row
+    Exit Function
+
+NOT_FOUND:
+    
+    FindCell = 0
+
+End Function
 
 
 ' その他
